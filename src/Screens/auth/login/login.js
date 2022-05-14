@@ -8,7 +8,6 @@ import {AuthRoutes} from '@constants/Routes';
 import * as yup from 'yup';
 import 'yup-phone';
 import {useDispatch} from 'react-redux';
-import {logIn} from '@actions/index';
 import {navigate} from '../../../../NavigationService';
 import {strings} from '@root/i18n';
 import Tarboush from '@svg/tarboush.svg';
@@ -115,7 +114,7 @@ const Login = ({navigation}) => {
         )}
         <View style={{width: '100%'}}>
           <PhoneInput
-            onChange={(phone) => {
+            onChange={phone => {
               onChange('phoneNumber', phone.replace(/ /g, ''));
             }}
             value={data.phoneNumber}
@@ -125,7 +124,7 @@ const Login = ({navigation}) => {
             defaultValue={data.password}
             label={strings('common.placeholder.password')}
             placeholder={strings('common.placeholder.password')}
-            onChangeText={(text) => onChange('password', text)}
+            onChangeText={text => onChange('password', text)}
             right={
               <InputIcon
                 icon={() => (isSecure ? <Visible /> : <Invisible />)}

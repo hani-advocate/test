@@ -8,6 +8,7 @@ import socket from '@constants/Utils/socket.io';
 // import RNBootSplash from 'react-native-bootsplash';
 
 const IsAuthenticated = ({children}) => {
+  console.log('adjkadljadj');
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const checkUser = useCallback(async () => {
@@ -27,6 +28,7 @@ const IsAuthenticated = ({children}) => {
       setIsLoading(false);
     }
   }, [dispatch]);
+
   useEffect(() => {
     checkUser();
   }, [checkUser]);

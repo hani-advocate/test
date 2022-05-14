@@ -3,7 +3,7 @@ import OneSignal from 'react-native-onesignal';
 import {Alert} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const initializeOneSignal = async (store) => {
+export const initializeOneSignal = async store => {
   OneSignal.setRequiresUserPrivacyConsent(false);
   OneSignal.provideUserConsent(true);
   OneSignal.setAppId('cc6efd90-7e66-4b0d-b04a-12ecb1b639b3');
@@ -28,48 +28,46 @@ export class OneSignalContainer extends React.Component {
     // OneSignal.
 
     /* O N E S I G N A L  H A N D L E R S */
-    OneSignal.setNotificationWillShowInForegroundHandler(
-      (notifReceivedEvent) => {
-        console.log(
-          'OneSignal: notification will show in foreground:',
-          notifReceivedEvent,
-        );
-        let notif = notifReceivedEvent.getNotification();
+    OneSignal.setNotificationWillShowInForegroundHandler(notifReceivedEvent => {
+      console.log(
+        'OneSignal: notification will show in foreground:',
+        notifReceivedEvent,
+      );
+      let notif = notifReceivedEvent.getNotification();
 
-        const button1 = {
-          text: 'Cancel',
-          onPress: () => {
-            notifReceivedEvent.complete();
-          },
-          style: 'cancel',
-        };
+      const button1 = {
+        text: 'Cancel',
+        onPress: () => {
+          notifReceivedEvent.complete();
+        },
+        style: 'cancel',
+      };
 
-        const button2 = {
-          text: 'Complete',
-          onPress: () => {
-            notifReceivedEvent.complete(notif);
-          },
-        };
+      const button2 = {
+        text: 'Complete',
+        onPress: () => {
+          notifReceivedEvent.complete(notif);
+        },
+      };
 
-        Alert.alert('Complete notification?', 'Test', [button1, button2], {
-          cancelable: true,
-        });
-      },
-    );
-    OneSignal.setNotificationOpenedHandler((notification) => {
+      Alert.alert('Complete notification?', 'Test', [button1, button2], {
+        cancelable: true,
+      });
+    });
+    OneSignal.setNotificationOpenedHandler(notification => {
       console.log('OneSignal: notification opened:', notification);
     });
-    OneSignal.setInAppMessageClickHandler((event) => {
+    OneSignal.setInAppMessageClickHandler(event => {
       console.log('OneSignal IAM clicked:', event);
     });
-    OneSignal.addEmailSubscriptionObserver((event) => {
+    OneSignal.addEmailSubscriptionObserver(event => {
       console.log('OneSignal: email subscription changed: ', event);
     });
-    OneSignal.addSubscriptionObserver((event) => {
+    OneSignal.addSubscriptionObserver(event => {
       console.log('OneSignal: subscription changed:', event);
       this.setState({isSubscribed: event.to.isSubscribed});
     });
-    OneSignal.addPermissionObserver((event) => {
+    OneSignal.addPermissionObserver(event => {
       console.log('OneSignal: permission changed:', event);
     });
 

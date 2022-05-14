@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 
 export const OfferPaymentWarningModal = ({isVisible, setIsVisible}) => {
   const navigation = useNavigation();
-  const {subscription} = useSelector((store) => store.User);
+  const {subscription} = useSelector(store => store.User);
 
   return (
     <Modal isVisible={isVisible} onBackdropPress={() => setIsVisible(false)}>

@@ -4,6 +4,7 @@ import {useOnTabPress} from '../utils';
 import {OffersRoutes} from '@constants/Routes';
 import OffersList from '@screens/offers/offers-list/offers';
 import OfferForm from '@screens/offers/offers-form';
+import TestScreen from '@screens/test-screen';
 import {navigatorStyles} from '@theme/theme';
 import {strings} from '@root/i18n';
 import {NavigatorBackButton} from '@root/Components';
@@ -43,6 +44,17 @@ export default () => {
           headerLeftContainerStyle: navigatorStyles.headerLeftContainer,
           header: () => null,
           // headerLeft: ({}) => <NavigatorBackButton />,
+        }}
+      />
+      <Stack.Screen
+        name={'PaymentTestScreen'}
+        component={TestScreen}
+        options={{
+          title: strings('screensTitle.offerForm'),
+          headerTitleStyle: navigatorStyles.headerTitle,
+          headerStyle: navigatorStyles.header,
+          headerLeftContainerStyle: navigatorStyles.headerLeftContainer,
+          headerLeft: ({}) => <NavigatorBackButton />,
         }}
       />
     </Stack.Navigator>

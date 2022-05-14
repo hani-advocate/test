@@ -15,6 +15,7 @@ const RootNavigator = () => {
   useEffect(() => {
     RNBootSplash.hide({duration: 220, fade: true});
     const listener = async state => {
+      console.log({state});
       switch (state) {
         case 'active':
           return RNBootSplash.hide({duration: 220, fade: true});
@@ -27,7 +28,8 @@ const RootNavigator = () => {
     const listenerOnChange = AppState.addEventListener('change', listener);
 
     return () => {
-      listenerOnChange.remove();
+      // listenerOnChange.remove();
+      listenerOnChange();
       // AppState.remove('change', listener);
     };
   }, []);

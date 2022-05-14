@@ -6,7 +6,7 @@ const instance = Axios.create({
   baseURL: API_HOST,
 });
 
-export const setAuthToken = async (token) => {
+export const setAuthToken = async token => {
   try {
     if (!token) {
       return;
@@ -43,8 +43,8 @@ export const init = async () => {
 };
 
 instance.interceptors.response.use(
-  (res) => res.data,
-  (err) => {
+  res => res.data,
+  err => {
     console.log({err});
     return Promise.reject(err.response.data);
   },

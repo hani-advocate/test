@@ -30,7 +30,7 @@ export const OfferPayment = ({navigation}) => {
   const dispatch = useDispatch();
   const {
     User: {me},
-  } = useSelector((store) => store);
+  } = useSelector(store => store);
   const {
     paymentMethods,
     payWithCreditCard,
@@ -46,7 +46,7 @@ export const OfferPayment = ({navigation}) => {
     navigation.navigate(OffersRoutes.OffersList);
   }, [dispatch, navigation, offer]);
 
-  const pay = async (params) => {
+  const pay = async params => {
     try {
       const {paymentMethod} = paymentMethods[selected];
       if (paymentMethod === 'CREDIT') {

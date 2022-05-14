@@ -15,6 +15,7 @@ import WebViewComponent from '@components/Webview';
 export * from './image-picker';
 export * from './submit-button';
 export * from './SEPA-bottom-sheet';
+export * from './payment-screen-wrapper';
 
 export {
   Text,
